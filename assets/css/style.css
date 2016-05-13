@@ -14,15 +14,32 @@
 }
 
 	.rps-overlay-icons {
-		padding: 15em 0 4em 0;
+		padding: 15em 0 3em 0;
 		text-align: center;
 	}
 
 	.player-name-container {
-		width: 45%;
-		margin: 0 auto;
+		text-align: center;
 	}
 
-		.player-name-container p {
-			padding: 1em 0;
+		.player-name-container input[type="text"] {
+			margin-right: -3px;
+			padding: .5em 1em;
+			border: none;
+			background: #fff;
+		}
+
+		.player-name-container input[type="text"]:focus {
+			outline: none;
+		}
+
+		.btn-custom {
+			border-radius: 0;
+			color: #eee;
+			background: #555;
+		}
+
+		.btn-custom:hover, .btn-custom:focus {
+			color: #eee;
+			background: #333;
 		}
