@@ -2,3 +2,27 @@
 .navbar-right {
 	margin-right: 0;
 }
+
+/* player name overlay */
+#player-name-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: #eee;
+}
+
+	.rps-overlay-icons {
+		padding: 15em 0 4em 0;
+		text-align: center;
+	}
+
+	.player-name-container {
+		width: 45%;
+		margin: 0 auto;
+	}
+
+		.player-name-container p {
+			padding: 1em 0;
+		}
