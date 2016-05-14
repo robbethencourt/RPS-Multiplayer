@@ -26,7 +26,7 @@
 	<nav class="navbar navbar-default">
 	 	<div class="container-fluid">
 	    	<div class="navbar-header">
-	      		<a class="navbar-brand" href="#">Rock Paper Scissor</a>
+	      		<a class="navbar-brand" href="#">MULTIPLAYER RPS</a>
 	    	</div>
 	    	<p class="navbar-text navbar-right">Username</p>
 	  	</div>
@@ -37,6 +37,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-4">
+
 					<!-- player score -->
 					<div class="player-score">
 						<ul class="list-unstyled">
@@ -45,12 +46,7 @@
 							<li>Losses: <span id="player-losses"></span></li>
 						</ul>
 					</div>
-				</div>
-				<div class="col-xs-4">
-					<!-- outcome display -->
-					<h3 id="outcome-display"></h3>
-				</div>
-				<div class="col-xs-4">
+
 					<!-- opponent score -->
 					<div class="opponent-score">
 						<ul class="list-unstyled">
@@ -60,12 +56,29 @@
 						</ul>
 					</div>
 				</div>
+				<div class="col-xs-8">
+
+					<!-- outcome display -->
+					<h3 id="outcome-display">YOU WIN!</h3>
+				</div>
 			</div>
 		</div>
+
+		<!-- rps-buttons -->
+		<div class="rps-buttons">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-4" class="rps-button" id="rock-button"><span class="glyphicon glyphicon-globe" aria-hidden="true" aria-label="rock"></span></div>
+					<div class="col-xs-4" class="rps-button" id="paper-button"><span class="glyphicon glyphicon-file" aria-hidden="true" aria-label="paper"></span></div>
+					<div class="col-xs-4" class="rps-button" id="scissor-button"><span class="glyphicon glyphicon-scissors" aria-hidden="true" aria-label="scissor"></span></div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 	
 
-	<!-- player name overlay -->
+	<!-- player name overlay 
 	<div id="player-name-overlay">
 		<div class="container-fluid">
 			<div class="rps-overlay-icons">
@@ -88,7 +101,8 @@
 			</div>
 		</div>
 	</div>
-	
+	-->
+
 	<!-- jQuery cdn -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
