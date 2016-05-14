@@ -17,6 +17,22 @@
 }
 
 
+/* rps-buttons */
+.rps-button {
+	cursor: pointer;
+	text-align: center;
+	padding: 5em 0;
+}
+
+
+/* comment display */
+#comment-display {
+	height: 200px;
+	width: 100%;
+	background: #eee;
+}
+
+
 /* player name overlay */
 #player-name-overlay {
 	position: fixed;
