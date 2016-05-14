@@ -18,6 +18,11 @@
 		text-align: center;
 	}
 
+		.rps-overlay-icons h2 {
+			font-family: 'Josefin Sans', sans-serif;
+			font-weight: 700;
+		}
+
 	.player-name-container {
 		text-align: center;
 	}

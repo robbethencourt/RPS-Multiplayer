@@ -14,6 +14,9 @@
 		<!-- Bootstrap minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+		<!-- Google Fonts - Josefin Sans 400 and 700 -->
+		<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700' rel='stylesheet' type='text/css'>
+
 		<!-- My Styles -->
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	</head>
@@ -29,9 +32,46 @@
 	  	</div>
 	</nav>
 
+	<!-- scores -->
+	<div class="scores">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-4">
+					<!-- player score -->
+					<div class="player-score">
+						<ul class="list-unstyled">
+							<li><span id="player-name"></span></li>
+							<li>Wins: <span id="player-wins"></span></li>
+							<li>Losses: <span id="player-losses"></span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<!-- outcome display -->
+					<h3 id="outcome-display"></h3>
+				</div>
+				<div class="col-xs-4">
+					<!-- opponent score -->
+					<div class="opponent-score">
+						<ul class="list-unstyled">
+							<li><span id="opponent-name"></span></li>
+							<li>Wins: <span id="opponent-wins"></span></li>
+							<li>Losses: <span id="opponent-losses"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<!-- player name overlay -->
 	<div id="player-name-overlay">
 		<div class="container-fluid">
 			<div class="rps-overlay-icons">
+				<div class="row">
+					<div class="col-xs-12"><h2>MULTIPLAYER</h2></div>
+				</div>
 				<div class="row">
 					<div class="col-xs-2 col-xs-offset-3"><p>ROCK</p><span class="glyphicon glyphicon-globe" aria-hidden="true" aria-label="rock"></span></div>
 					<div class="col-xs-2"><p>PAPER</p><span class="glyphicon glyphicon-file" aria-hidden="true" aria-label="paper"></span></div>
