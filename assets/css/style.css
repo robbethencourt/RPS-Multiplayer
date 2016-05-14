@@ -1,12 +1,29 @@
-/* nav */
-.navbar-brand {
-	font-family: 'Josefin Sans', sans-serif;
-	font-weight: 700;
+/* global styles */
+body {
+	color: #787878;
+	background: #e4e4e4;
 }
 
-.navbar-right {
-	margin-right: 0;
+
+/* nav */
+.navbar-default {
+	border-radius: 0;
+	background: #DBDBDB;
 }
+
+	.navbar-header {
+		float: left;
+	}
+
+	.navbar-brand {
+		font-family: 'Josefin Sans', sans-serif;
+		font-weight: 700;
+	}
+
+	.navbar-right {
+		float: right;
+		margin-right: 0;
+	}
 
 
 /* scores */
@@ -20,8 +37,13 @@
 /* rps-buttons */
 .rps-button {
 	cursor: pointer;
-	text-align: center;
 	padding: 5em 0;
+	color: #39a9d8;
+	text-align: center;
+}
+
+.rps-button:hover, .rps-button:focus {
+	color: #4592d0;
 }
 
 
@@ -29,7 +51,7 @@
 #comment-display {
 	height: 200px;
 	width: 100%;
-	background: #eee;
+	background: #efefef;
 }
 
 
@@ -51,7 +73,7 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #000;
+  background-color: #DBDBDB;
 }
 
 	/* comment input */
@@ -59,22 +81,19 @@ body {
 		padding-top: 12px;
 	}
 
-	.footer input[type="text"] {
-		margin-right: -3px;
-		padding: .5em 1em;
-		border: none;
-		border-radius: 0;
-		background: #fff;
-	}
+		.footer input[type="text"] {
+			margin-right: -3px;
+			padding: .5em 1em;
+			border: none;
+			border-radius: 0;
+			background: #fff;
+		}
 
-	.footer input[type="text"]:focus {
-		outline: none;
-	}
+		.footer input[type="text"]:focus {
+			outline: none;
+		}
 
-	/* this will apply to all buttons so it matches with the height of the text input */
-	.btn {
-		padding: 7px 12px;
-	}
+		
 
 
 /* player name overlay */
@@ -84,7 +103,7 @@ body {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background: #eee;
+	background: #e4e4e4;
 }
 
 	.rps-overlay-icons {
@@ -116,10 +135,10 @@ body {
 		.btn-custom {
 			border-radius: 0;
 			color: #eee;
-			background: #555;
+			background: #39a9d8;
 		}
 
 		.btn-custom:hover, .btn-custom:focus {
 			color: #eee;
-			background: #333;
+			background: #4592d0;
 		}
