@@ -12,6 +12,8 @@ $(document).ready(function(){
 		var losses = 0;
 		var choice = null;
 
+		var player_number = 0;
+
 		// determine the player upon player inputting their name and submit to firebase
 		function determinePlayer() {
 
@@ -41,7 +43,7 @@ $(document).ready(function(){
 					// set the players object and the 1 object with what the user entered	
 					dataRef.set({ 
 						'players': {
-							'1': {
+							'player1': {
 								name: name,
 								wins: wins,
 								losses: losses,
@@ -49,6 +51,8 @@ $(document).ready(function(){
 							}
 						}
 					}); // end set
+
+					player_number = 1;
 
 				// if there is data in firebase
 				} else {
@@ -58,13 +62,15 @@ $(document).ready(function(){
 
 					// update the players object with the 2 player with what the user entered	
 					child_to_update.update({
-						'2': {
+						'player2': {
 							name: name,
 							wins: wins,
 							losses: losses,
 							choice: choice
 						}
 					}); // end update
+
+					player_number = 2;
 
 				} // end if else
 
@@ -83,6 +89,41 @@ $(document).ready(function(){
 			$('#player-name-score').html(name);
 
 		} // end determinePlayer()
+
+
+		// updating the screen with firebase data
+		dataRef.on('child_changed', function (snapshot) {
+
+			// store each player into it's own variable
+			var player1 = snapshot.val().player1;
+			var player2 = snapshot.val().player2;
+
+			// if the palyer number is set to 1
+			if (player_number === 1) {
+
+				// update the screen with the below items
+				$('#player-wins').html(player1.wins); // player wins
+				$('#player-losses').html(player1.losses); // player losses
+				$('#opponent-name-score').html(player2.name); // opponents name
+				$('#opponent-wins').html(player2.wins); // oponents wins
+				$('#opponent-losses').html(player2.losses); // opponents losses
+
+			// if the player number is other than 1
+			} else {
+
+				// update the screen with the below items
+				$('#player-wins').html(player2.wins); // player wins
+				$('#player-losses').html(player2.losses); // player losses
+				$('#opponent-name-score').html(player1.name); // opponent name
+				$('#opponent-wins').html(player1.wins); // opponent wins
+				$('#opponent-losses').html(player1.losses); // opponent losses
+
+			} // end if else
+
+		}); // end updating screen
+
+		
+		// click events
 
 		// click event for when the player first enters their name on the initial game screen
 		$('#player-name-submit').on('click', function () {
