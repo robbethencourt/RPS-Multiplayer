@@ -120,6 +120,8 @@ $(document).ready(function(){
 
 			} // end if else
 
+			$('.rps-buttons').removeClass('not-visible');
+
 		}); // end updating screen
 
 		function rpsGameLogic(id_to_pass) {

@@ -23,6 +23,10 @@ a, a:active, a:link {
 	display: none;
 }
 
+.not-visible {
+	visibility: hidden;
+}
+
 
 
 /* nav */
