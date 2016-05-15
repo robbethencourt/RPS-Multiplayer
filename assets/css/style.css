@@ -27,11 +27,17 @@ body {
 
 
 /* scores */
-/* outcome display */
-#outcome-display {
-	font-family: 'Josefin Sans', sans-serif;
-	font-weight: 700;
+.player-score ul li:nth-of-type(2), .player-score ul li:nth-of-type(3), .opponent-score ul li:nth-of-type(2), .opponent-score ul li:nth-of-type(3) {
+	font-style: italic;
 }
+
+	/* outcome display */
+	#outcome-display {
+		padding: 1em 0 0 0;
+		font-family: 'Josefin Sans', sans-serif;
+		font-weight: 700;
+		text-align: center;
+	}
 
 
 /* game messages */
@@ -142,6 +148,8 @@ body {
 		.btn-custom {
 			border-radius: 0;
 			color: #eee;
+			font-family: 'Josefin Sans', sans-serif;
+			font-weight: 700;
 			background: #39a9d8;
 		}
 
