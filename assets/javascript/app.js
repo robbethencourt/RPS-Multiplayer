@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 	function rockPaperScissor() {
 
-		// drop the firebase onto the datRef variable to use throughout my js
+		// drop the firebase onto the dataRef variable to use throughout my js
 		var dataRef = new Firebase('https://multiplayer-rps.firebaseio.com/');
 
 		//variables
@@ -25,9 +25,50 @@ $(document).ready(function(){
 				losses: losses,
 				choice: choice
 			}
+
+			// declare the variable we'll use to log as firebase being either empty (false) or has data (true)
+			var data_exists = null;
+
+			// we need to determine if there are any entries in firebase
+			dataRef.once('value', function (snapshot) {
+
+				// we set a variable to true or false depending on if there's data in firebase 
+				data_exists = snapshot.exists();
 			
-			// push the player object to firebase	
-			dataRef.push(player);
+				// if there isn't any data in firebase
+				if (data_exists !== true) {
+
+					// set the players object and the 1 object with what the user entered	
+					dataRef.set({ 
+						'players': {
+							'1': {
+								name: name,
+								wins: wins,
+								losses: losses,
+								choice: choice
+							}
+						}
+					}); // end set
+
+				// if there is data in firebase
+				} else {
+
+					// store teh players child as a variable
+					var child_to_update = dataRef.child('players');
+
+					// update the players object with the 2 player with what the user entered	
+					child_to_update.update({
+						'2': {
+							name: name,
+							wins: wins,
+							losses: losses,
+							choice: choice
+						}
+					}); // end update
+
+				} // end if else
+
+			}); // end dataRef check on whether there's data in firebase
 
 			// add the hide class to the main game overlay screen
 			$('#player-name-overlay').addClass('hide');
