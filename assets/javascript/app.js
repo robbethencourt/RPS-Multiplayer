@@ -32,7 +32,7 @@ $(document).ready(function(){
 			var data_exists = null;
 
 			// we need to determine if there are any entries in firebase
-			dataRef.once('value', function (snapshot) {
+			dataRef.once('value', function(snapshot) {
 
 				// we set a variable to true or false depending on if there's data in firebase 
 				data_exists = snapshot.exists();
@@ -92,7 +92,7 @@ $(document).ready(function(){
 
 
 		// updating the screen with firebase data
-		dataRef.on('child_changed', function (snapshot) {
+		dataRef.on('child_changed', function(snapshot) {
 
 			// store each player into it's own variable
 			var player1 = snapshot.val().player1;
@@ -122,15 +122,32 @@ $(document).ready(function(){
 
 		}); // end updating screen
 
+		function rpsGameLogic(id_to_pass) {
+			
+			console.log(id_to_pass);
+
+		} // end rpsGameLogic()
+
 		
 		// click events
 
 		// click event for when the player first enters their name on the initial game screen
-		$('#player-name-submit').on('click', function () {
+		$('#player-name-submit').on('click', function() {
 			
 			determinePlayer();
 
 		}) // end player submit event
+
+		// click event for the rps buttons
+		$('.rps-button').on('click', function() {
+
+			// store the id of the button clicked in the rps_button_id variable
+			var rps_button_id = $(this).attr('id');
+
+			// call the rpsGameLogic() function and pass the id of the button clicked
+			rpsGameLogic(rps_button_id);
+
+		}) // end rps icon click event
 
 	} // end rockPaperScissor()
 
