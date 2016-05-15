@@ -61,7 +61,7 @@ $(document).ready(function(){
 				} else {
 
 					// increment the turns by 1
-					turns++;
+					turns = 1;
 
 					// update the turns object in firebase
 					dataRef.update({
@@ -100,6 +100,8 @@ $(document).ready(function(){
 			// set the player name spot in the score section to what the player entererd
 			$('#player-name-score').html(name);
 
+			return turns;
+
 		} // end determinePlayer()
 
 
@@ -110,8 +112,8 @@ $(document).ready(function(){
 			var player1 = snapshot.val().players.player1;
 			var player2 = snapshot.val().players.player2;
 
+			// store the value of turns in the current_turn variable
 			var current_turn = snapshot.val().turns;
-			console.log(current_turn);
 
 			// if the palyer number is set to 1
 			if (player_number === 1) {
@@ -187,14 +189,32 @@ $(document).ready(function(){
 
 				} // end if
 
-
 			} // end if
 
 		}); // end updating screen
 
 		function rpsGameLogic(id_to_pass) {
-			
-			console.log(id_to_pass);
+
+			dataRef.once('value', function(snapshot) {
+				
+				// store the value of turns in the current_turn variable
+				var current_turn = snapshot.val().turns;
+
+				if (current_turn === 1) {
+					turns = 2;
+					dataRef.update({
+						turns: turns
+					});
+				} // end if 
+
+				if (current_turn === 2) {
+					turns = 1;
+					dataRef.update({
+						turns: turns
+					});
+				} // end if
+
+			});
 
 		} // end rpsGameLogic()
 
