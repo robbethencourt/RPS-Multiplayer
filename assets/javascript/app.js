@@ -60,7 +60,7 @@ $(document).ready(function(){
 				// if there is data in firebase
 				} else {
 
-					// increment the turns by 1
+					// increment the turns by 1 (why isn't this updating the variable for others to use in functions later on?)
 					turns = 1;
 
 					// update the turns object in firebase
@@ -100,8 +100,6 @@ $(document).ready(function(){
 			// set the player name spot in the score section to what the player entererd
 			$('#player-name-score').html(name);
 
-			return turns;
-
 		} // end determinePlayer()
 
 
@@ -140,6 +138,8 @@ $(document).ready(function(){
 
 					// add the not-visible class
 					$('.rps-buttons').addClass('not-visible');
+					// update game message
+					$('#game-message').html("it's " + player2.name + "'s turn so wiat 'til they decide");
 				
 				} // end if
 
@@ -168,6 +168,8 @@ $(document).ready(function(){
 
 					// remove the not-visible class
 					$('.rps-buttons').removeClass('not-visible');
+					// update game message
+					$('#game-message').html("it's your turn so choose wiesely");
 
 				} // end if
 
