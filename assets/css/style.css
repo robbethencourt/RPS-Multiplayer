@@ -34,10 +34,17 @@ body {
 }
 
 
+/* game messages */
+.game-messages {
+	padding: 2em 0 0 0;
+	text-align: center;
+}
+
+
 /* rps-buttons */
 .rps-button {
 	cursor: pointer;
-	padding: 5em 0;
+	padding: 3em 0;
 	color: #39a9d8;
 	text-align: center;
 }
