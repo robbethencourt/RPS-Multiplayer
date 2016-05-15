@@ -28,7 +28,7 @@
 	    	<div class="navbar-header">
 	      		<a class="navbar-brand" href="#">MULTIPLAYER RPS</a>
 	    	</div>
-	    	<p class="navbar-text navbar-right">Hi <span id="player-name">player name</span></p>
+	    	<p class="navbar-text navbar-right">Hi <span id="player-name-nav">player name</span></p>
 	  	</div>
 	</nav>
 
@@ -41,7 +41,7 @@
 					<!-- player score -->
 					<div class="player-score">
 						<ul class="list-unstyled">
-							<li><span id="player-name">Test Username</span></li>
+							<li><span id="player-name-score">Test Username</span></li>
 							<li>Wins: <span id="player-wins"></span></li>
 							<li>Losses: <span id="player-losses"></span></li>
 						</ul>
@@ -50,7 +50,7 @@
 					<!-- opponent score -->
 					<div class="opponent-score">
 						<ul class="list-unstyled">
-							<li><span id="opponent-name">Test Opponent Name</span></li>
+							<li><span id="opponent-name-score">Test Opponent Name</span></li>
 							<li>Wins: <span id="opponent-wins"></span></li>
 							<li>Losses: <span id="opponent-losses"></span></li>
 						</ul>
@@ -144,7 +144,7 @@
 			<div class="player-name-container">
 				<div class="row">
 					<div class="col-sm-12">
-						<input type="text" id="player-name" placeholder="Name" />
+						<input type="text" id="player-name-input" placeholder="Name" />
 						<button type="button" id="player-name-submit" class="btn btn-custom">Play Game</button>
 					</div>
 				</div>
