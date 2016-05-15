@@ -1,7 +1,11 @@
 /* global styles */
 body {
-	color: #787878;
+	color: #999;
 	background: #e4e4e4;
+}
+
+a, a:active, a:link {
+	color: #787878;
 }
 
 
@@ -10,6 +14,10 @@ body {
 	border-radius: 0;
 	background: #DBDBDB;
 }
+
+	.navbar-default a, .navbar-default a:active, .navbar-default a:link {
+		color: #999;
+	}
 
 	.navbar-header {
 		float: left;
@@ -111,7 +119,7 @@ body {
 			padding: .5em 1em;
 			border: none;
 			border-radius: 0;
-			background: #fff;
+			background: #222;
 		}
 
 		.footer input[type="text"]:focus {
@@ -128,7 +136,7 @@ body {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background: #e4e4e4;
+	background: #282828;
 }
 
 	.rps-overlay-icons {
@@ -137,6 +145,7 @@ body {
 	}
 
 		.rps-overlay-icons h2 {
+			padding-bottom: .5em;
 			font-family: 'Josefin Sans', sans-serif;
 			font-weight: 700;
 		}
@@ -150,7 +159,7 @@ body {
 			padding: .5em 1em;
 			border: none;
 			border-radius: 0;
-			background: #fff;
+			background: #222;
 		}
 
 		.player-name-container input[type="text"]:focus {
