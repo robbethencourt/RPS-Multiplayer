@@ -11,8 +11,8 @@ $(document).ready(function(){
 		var wins = 0;
 		var losses = 0;
 		var choice = null;
-
 		var player_number = 0;
+		var turns = 0;
 
 		// determine the player upon player inputting their name and submit to firebase
 		function determinePlayer() {
@@ -43,26 +43,34 @@ $(document).ready(function(){
 					// set the players object and the 1 object with what the user entered	
 					dataRef.set({ 
 						'players': {
-							'player1': {
+							player1: {
 								name: name,
 								wins: wins,
 								losses: losses,
 								choice: choice
 							}
-						}
+						}, 
+							turns: turns
 					}); // end set
 
+					// set the player number to 1
 					player_number = 1;
 
 				// if there is data in firebase
 				} else {
 
+					turns++;
+
 					// store teh players child as a variable
 					var child_to_update = dataRef.child('players');
 
+					dataRef.update({
+						turns: turns
+					})
+
 					// update the players object with the 2 player with what the user entered	
 					child_to_update.update({
-						'player2': {
+						player2: {
 							name: name,
 							wins: wins,
 							losses: losses,
@@ -70,6 +78,7 @@ $(document).ready(function(){
 						}
 					}); // end update
 
+					// set the player number to 2
 					player_number = 2;
 
 				} // end if else
@@ -107,6 +116,7 @@ $(document).ready(function(){
 				$('#opponent-name-score').html(player2.name); // opponents name
 				$('#opponent-wins').html(player2.wins); // oponents wins
 				$('#opponent-losses').html(player2.losses); // opponents losses
+				$('#game-message').html("it's your turn so choose wiesely");
 
 			// if the player number is other than 1
 			} else {
@@ -120,6 +130,7 @@ $(document).ready(function(){
 
 			} // end if else
 
+			// removing the not-visible class when both users are in firebase
 			$('.rps-buttons').removeClass('not-visible');
 
 		}); // end updating screen
