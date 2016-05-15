@@ -10,7 +10,7 @@ $(document).ready(function(){
 		var name = '';
 		var wins = 0;
 		var losses = 0;
-		var choice = null;
+		var choice = ' ';
 		var player_number = 0;
 		var turns = 0;
 
@@ -200,21 +200,43 @@ $(document).ready(function(){
 				// store the value of turns in the current_turn variable
 				var current_turn = snapshot.val().turns;
 
+				// if it's the first player's turn
 				if (current_turn === 1) {
+
+					// set turns to 2
 					turns = 2;
+
+					// updat firebase with the current turn
 					dataRef.update({
 						turns: turns
-					});
+					}); // end dataRef turns update
+
+					// update firebase with the player one's rps choice
+					dataRef.update({
+					  'players/player1/choice': id_to_pass
+					}); // end dataRef players update
+
 				} // end if 
 
+				// if it's the second player's turn
 				if (current_turn === 2) {
+
+					// set turns to 1
 					turns = 1;
+
+					// update firebase with the current turn
 					dataRef.update({
 						turns: turns
-					});
+					}); // end dataRef turns update
+
+					// update firebase with the player two's rps choice
+					dataRef.update({
+					  'players/player2/choice': id_to_pass
+					}); // end dataRef players update
+
 				} // end if
 
-			});
+			}); // end dataRef
 
 		} // end rpsGameLogic()
 
