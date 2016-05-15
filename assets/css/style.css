@@ -55,8 +55,20 @@ body {
 	text-align: center;
 }
 
-.rps-button:hover, .rps-button:focus {
+.rps-button:hover, .rps-button:focus, .rps-button.active {
 	color: #4592d0;
+	background: #efefef;
+}
+
+/* eliminates the gutters in bootstrap */
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 
