@@ -1,12 +1,28 @@
 /* global styles */
 body {
 	color: #999;
-	background: #e4e4e4;
+	background: #282828;
 }
 
 a, a:active, a:link {
 	color: #787878;
 }
+
+/* eliminates the gutters in bootstrap */
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.hide {
+	display: none;
+}
+
 
 
 /* nav */
@@ -34,10 +50,12 @@ a, a:active, a:link {
 	}
 
 
+
 /* scores */
 .player-score ul li:nth-of-type(2), .player-score ul li:nth-of-type(3), .opponent-score ul li:nth-of-type(2), .opponent-score ul li:nth-of-type(3) {
 	font-style: italic;
 }
+
 
 	/* outcome display */
 	#outcome-display {
@@ -48,11 +66,13 @@ a, a:active, a:link {
 	}
 
 
+
 /* game messages */
 .game-messages {
 	padding: 2em 0 0 0;
 	text-align: center;
 }
+
 
 
 /* rps-buttons */
@@ -65,18 +85,7 @@ a, a:active, a:link {
 
 .rps-button:hover, .rps-button:focus, .rps-button.active {
 	color: #4592d0;
-	background: #efefef;
-}
-
-/* eliminates the gutters in bootstrap */
-.row.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-}
-.row.no-gutters > [class^="col-"],
-.row.no-gutters > [class*=" col-"] {
-  padding-right: 0;
-  padding-left: 0;
+	background: #222;
 }
 
 
@@ -84,8 +93,9 @@ a, a:active, a:link {
 #comment-display {
 	height: 200px;
 	width: 100%;
-	background: #efefef;
+	background: #222;
 }
+
 
 
 /* footer */
@@ -106,8 +116,8 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #DBDBDB;
 }
+
 
 	/* comment input */
 	.input-group {
