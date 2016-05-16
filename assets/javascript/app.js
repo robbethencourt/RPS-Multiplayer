@@ -113,7 +113,8 @@ $(document).ready(function(){
 			// store the value of turns in the current_turn variable
 			var current_turn = snapshot.val().turns;
 
-			if (current_turn === 2) {
+			console.log(current_turn);
+			if (current_turn === 1) {
 				switch(player1.choice) {
 
 						case 'rock':
@@ -294,38 +295,42 @@ $(document).ready(function(){
 		function rpsGameLogic(id_to_pass) {
 
 			// if it's the first player's turn
-			if (player_number === 1) {				
-
-				// update firebase with the player one's rps choice
-				dataRef.update({
-				  'players/player1/choice': id_to_pass
-				}); // end dataRef players update
+			if (player_number === 1) {		
 
 				// set turns to 2
 				turns = 2;
 
-				// updat firebase with the current turn
+				/* updat firebase with the current turn
 				dataRef.update({
 					turns: turns
-				}); // end dataRef turns update
+				}); // end dataRef turns update		
+				*/
+
+				// update firebase with the player one's rps choice
+				dataRef.update({
+				  	'players/player1/choice': id_to_pass,
+				  	turns: turns
+				}); // end dataRef players update
 
 			}
 
 			// if it's the second player's turn
 			if (player_number === 2) {
 
-				// update firebase with the player two's rps choice
-				dataRef.update({
-				  'players/player2/choice': id_to_pass
-				}); // end dataRef players update
-
 				// set turns to 1
 				turns = 1;
 
-				// update firebase with the current turn
+				/* update firebase with the current turn
 				dataRef.update({
 					turns: turns
 				}); // end dataRef turns update
+				*/
+
+				// update firebase with the player two's rps choice
+				dataRef.update({
+				  	'players/player2/choice': id_to_pass,
+				  	turns: turns
+				}); // end dataRef players update
 
 			} // end if
 
