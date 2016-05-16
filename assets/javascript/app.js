@@ -113,6 +113,102 @@ $(document).ready(function(){
 			// store the value of turns in the current_turn variable
 			var current_turn = snapshot.val().turns;
 
+			if (current_turn === 2) {
+				switch(player1.choice) {
+
+						case 'rock':
+
+							switch(player2.choice) {
+
+								case 'rock':
+
+									$('#outcome-display').html("TIE!");
+									break;
+
+								case 'paper':
+
+									$('#outcome-display').html("player 2 wins!");
+									break;
+
+								case 'scissor':
+
+									$('#outcome-display').html("player 1 wins!");
+
+								default:
+
+									console.log('default');
+									break;
+
+							}
+
+						break;
+
+						case 'paper':
+
+							switch(player2.choice) {
+
+								case 'rock':
+
+									$('#outcome-display').html("player 1 wins!");
+									break;
+
+								case 'paper':
+
+									$('#outcome-display').html("TIE!");
+									break;
+
+								case 'scissor':
+
+									$('#outcome-display').html("player 2 wins!");
+									break;
+
+								default:
+
+									console.log('default');
+									break;
+
+							}
+
+						break;
+
+						case 'scissor':
+
+							switch(player2.choice) {
+
+								case 'rock':
+
+									$('#outcome-display').html("player 2 wins!");
+									break;
+
+								case 'paper':
+
+									$('#outcome-display').html("player 1 wins!");
+									break;
+
+								case 'scissor':
+
+									$('#outcome-display').html("TIE!");
+									break;
+
+								default:
+
+									console.log('default');
+									break;
+
+							}
+
+						break;
+
+						default:
+
+							console.log('default');
+							break;
+
+					}
+			}
+
+				
+
 			// if the palyer number is set to 1
 			if (player_number === 1) {
 
@@ -197,145 +293,41 @@ $(document).ready(function(){
 
 		function rpsGameLogic(id_to_pass) {
 
-			dataRef.once('value', function(snapshot) {
+			// if it's the first player's turn
+			if (player_number === 1) {				
 
-				// store each player into it's own variable
-				var player1 = snapshot.val().players.player1;
-				var player2 = snapshot.val().players.player2;
-				
-				// store the value of turns in the current_turn variable
-				var current_turn = snapshot.val().turns;
+				// update firebase with the player one's rps choice
+				dataRef.update({
+				  'players/player1/choice': id_to_pass
+				}); // end dataRef players update
 
-				// if it's the first player's turn
-				if (current_turn === 1) {
+				// set turns to 2
+				turns = 2;
 
-					// update firebase with the player one's rps choice
-					dataRef.update({
-					  'players/player1/choice': id_to_pass
-					}); // end dataRef players update
+				// updat firebase with the current turn
+				dataRef.update({
+					turns: turns
+				}); // end dataRef turns update
 
-					// set turns to 2
-					turns = 2;
+			}
 
-					// updat firebase with the current turn
-					dataRef.update({
-						turns: turns
-					}); // end dataRef turns update
+			// if it's the second player's turn
+			if (player_number === 2) {
 
-				} // end if 
+				// update firebase with the player two's rps choice
+				dataRef.update({
+				  'players/player2/choice': id_to_pass
+				}); // end dataRef players update
 
-				// if it's the second player's turn
-				if (current_turn === 2) {
+				// set turns to 1
+				turns = 1;
 
-					// update firebase with the player two's rps choice
-					dataRef.update({
-					  'players/player2/choice': id_to_pass
-					}); // end dataRef players update
+				// update firebase with the current turn
+				dataRef.update({
+					turns: turns
+				}); // end dataRef turns update
 
-					switch(player1.choice) {
-
-						case 'rock':
-
-							switch(id_to_pass) {
-
-								case 'rock':
-
-									console.log('tie');
-									break;
-
-								case 'paper':
-
-									console.log('player 2 wins');
-									break;
-
-								case 'scissor':
-
-									console.log('player 1 wins');
-									break;
-
-								default:
-
-									console.log('default');
-									break;
-
-							}
-
-						break;
-
-						case 'paper':
-
-							switch(id_to_pass) {
-
-								case 'rock':
-
-									console.log('player 1 wins');
-									break;
-
-								case 'paper':
-
-									console.log('tie');
-									break;
-
-								case 'scissor':
-
-									console.log('player 2 wins');
-									break;
-
-								default:
-
-									console.log('default');
-									break;
-
-							}
-
-						break;
-
-						case 'scissor':
-
-							switch(id_to_pass) {
-
-								case 'rock':
-
-									console.log('player 2 wins');
-									break;
-
-								case 'paper':
-
-									console.log('player 1 wins');
-									break;
-
-								case 'scissor':
-
-									console.log('tie');
-									break;
-
-								default:
-
-									console.log('default');
-									break;
-
-							}
-
-						break;
-
-						default:
-
-							console.log('default');
-							break;
-
-					}
-
-					// set turns to 1
-					turns = 1;
-
-					// update firebase with the current turn
-					dataRef.update({
-						turns: turns
-					}); // end dataRef turns update
-
-				} // end if
-
-			}); // end dataRef
+			} // end if
 
 		} // end rpsGameLogic()
 
