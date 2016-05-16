@@ -248,7 +248,7 @@ $(document).ready(function(){
 					// add the not-visible class
 					$('.rps-buttons').addClass('not-visible');
 					// update game message
-					$('#game-message').html("it's " + player2.name + "'s turn so wiat 'til they decide");
+					$('#game-message').html("You chose " + player1.choice + ", now it's " + player2.name + "'s turn");
 				
 				} // end if
 
@@ -288,7 +288,7 @@ $(document).ready(function(){
 					// add the not-visible class
 					$('.rps-buttons').addClass('not-visible');
 					// update game message
-					$('#game-message').html("it's " + player1.name + "'s turn so wiat 'til they decide");
+					$('#game-message').html("You chose " + player2.choice + ", now it's " + player1.name + "'s turn");
 				
 				} // end if
 
