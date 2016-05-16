@@ -37,18 +37,19 @@ $(document).ready(function(){
 				// we set a variable to true or false depending on if there's data in firebase 
 				data_exists = snapshot.exists();
 
+				// a snapshot of firebase to determine if player 2 exists
 				player2_exists = snapshot.child('players/player2').exists();
-
-				console.log(player2_exists);
 			
-				// if there isn't any data in firebase
+				// if there isn't any data in firebase, or if there is data in firebase and player 2 exists. (this is in the event player 1 drops out of the game and a new player 1 needs to be established)
 				if (data_exists !== true || (data_exists === true && player2_exists === true)) {
 
+					// if there is a player 2 already in the game we need to update the turns to 1 so the game know to continue on
 					if (data_exists === true && player2_exists === true) {
 
+						// set turns to 1
 						turns = 1;
 
-					}
+					} // end if
 
 					// set the player number to 1
 					player_number = 1;
@@ -220,8 +221,6 @@ $(document).ready(function(){
 
 			} // end if
 
-				
-
 			// if the palyer number is set to 1
 			if (player_number === 1) {
 
@@ -264,9 +263,6 @@ $(document).ready(function(){
 
 			// if the player number is not 1
 			if (player_number !== 1) {
-
-				console.log(player_number);
-				console.log(turns);
 
 				// update the screen with the below items
 				$('#player-wins').html(player2.wins); // player wins
@@ -362,24 +358,24 @@ $(document).ready(function(){
 
 		// onuload event to trigger if the player refreshes page or leaves the site
 		$(window).unload(function() {
-			
-			console.log(player_number);
 
-
-
+			// if the player is set to 1
 			if (player_number === 1) {
 
+				// we remove player 1's data
 				dataRef.child('players/player1').remove();
 
-			}
+			} // end if
 
+			// if player is set to 2
 			if (player_number === 2) {
 
+				// we remove player 2's data
 				dataRef.child('players/player2').remove();
 
-			}
+			} // end if
 
-		});
+		}); // end window unload
 
 	} // end rockPaperScissor()
 
