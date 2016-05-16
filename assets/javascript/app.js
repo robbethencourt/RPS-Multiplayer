@@ -475,21 +475,42 @@ $(document).ready(function(){
 		// onuload event to trigger if the player refreshes page or leaves the site
 		$(window).unload(function() {
 
-			// if the player is set to 1
-			if (player_number === 1) {
+			// we need to determine if there are any entries in firebase
+			dataRef.once('value', function(snapshot) {
 
-				// we remove player 1's data
-				dataRef.child('players/player1').remove();
+				// a snapshot of firebase to determine if player 1 exists
+				player1_exists = snapshot.child('players/player1').exists();
+				// a snapshot of firebase to determine if player 2 exists
+				player2_exists = snapshot.child('players/player2').exists();
 
-			} // end if
+				// if both players are leaving the game
+				if (player1_exists === false || player2_exists === false) {
 
-			// if player is set to 2
-			if (player_number === 2) {
+					// remove all data from firebase
+					dataRef.remove();
 
-				// we remove player 2's data
-				dataRef.child('players/player2').remove();
+				// if only one player is leaving the game
+				} else {
 
-			} // end if
+					// if the player is set to 1
+					if (player_number === 1 ) {
+
+						// we remove player 1's data
+						dataRef.child('players/player1').remove();
+
+					} // end if
+
+					// if player is set to 2
+					if (player_number === 2) {
+
+						// we remove player 2's data
+						dataRef.child('players/player2').remove();
+
+					} // end if
+
+				} // end if else
+
+			}); // end dataRef
 
 		}); // end window unload
 
