@@ -302,6 +302,12 @@ $(document).ready(function(){
 
 			} // end if
 
+			var comment_to_display = snapshot.val().comments;
+
+			console.log(comment_to_display);
+
+			//$('#comment-display').html(snapshot.val().comments);
+
 		}); // end updating screen
 
 		function rpsGameLogic() {
