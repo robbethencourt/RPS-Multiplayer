@@ -36,20 +36,23 @@ $(document).ready(function(){
 
 				// we set a variable to true or false depending on if there's data in firebase 
 				data_exists = snapshot.exists();
+
+				player2_exists = snapshot.child('players/player2').exists();
+
+				console.log(player2_exists);
 			
 				// if there isn't any data in firebase
-				if (data_exists !== true) {
+				if (data_exists !== true || (data_exists === true && player2_exists === true)) {
 
 					// set the players object and the 1 object with what the user entered	
-					dataRef.set({ 
-						'players': {
-							player1: {
+					dataRef.update({ 
+						'players/player1': {
 								name: name,
 								wins: wins,
 								losses: losses,
 								choice: choice
 							}
-						}, 
+						, 
 							// set the turns object to 0
 							turns: turns
 					}); // end set
@@ -113,100 +116,103 @@ $(document).ready(function(){
 			// store the value of turns in the current_turn variable
 			var current_turn = snapshot.val().turns;
 
-			console.log(current_turn);
+			// if it's the second player's turn
 			if (current_turn === 1) {
+
+				// switch statement for the rps game logic
 				switch(player1.choice) {
 
-						case 'rock':
+					case 'rock':
 
-							switch(player2.choice) {
+						switch(player2.choice) {
 
-								case 'rock':
+							case 'rock':
 
-									$('#outcome-display').html("TIE!");
-									break;
+								$('#outcome-display').html("TIE!");
+								break;
 
-								case 'paper':
+							case 'paper':
 
-									$('#outcome-display').html("player 2 wins!");
-									break;
+								$('#outcome-display').html("player 2 wins!");
+								break;
 
-								case 'scissor':
+							case 'scissor':
 
-									$('#outcome-display').html("player 1 wins!");
+								$('#outcome-display').html("player 1 wins!");
 
-								default:
+							default:
 
-									console.log('default');
-									break;
+								$('#outcome-display').html("");
+								break;
 
-							}
+						}
 
+					break;
+
+					case 'paper':
+
+						switch(player2.choice) {
+
+							case 'rock':
+
+								$('#outcome-display').html("player 1 wins!");
+								break;
+
+							case 'paper':
+
+								$('#outcome-display').html("TIE!");
+								break;
+
+							case 'scissor':
+
+								$('#outcome-display').html("player 2 wins!");
+								break;
+
+							default:
+
+								$('#outcome-display').html("");
+								break;
+
+						}
+
+					break;
+
+					case 'scissor':
+
+						switch(player2.choice) {
+
+							case 'rock':
+
+								$('#outcome-display').html("player 2 wins!");
+								break;
+
+							case 'paper':
+
+								$('#outcome-display').html("player 1 wins!");
+								break;
+
+							case 'scissor':
+
+								$('#outcome-display').html("TIE!");
+								break;
+
+							default:
+
+								$('#outcome-display').html("");
+								break;
+
+						}
+
+					break;
+
+					default:
+
+						console.log('default');
 						break;
 
-						case 'paper':
+				} // end switch for game logic
 
-							switch(player2.choice) {
-
-								case 'rock':
-
-									$('#outcome-display').html("player 1 wins!");
-									break;
-
-								case 'paper':
-
-									$('#outcome-display').html("TIE!");
-									break;
-
-								case 'scissor':
-
-									$('#outcome-display').html("player 2 wins!");
-									break;
-
-								default:
-
-									console.log('default');
-									break;
-
-							}
-
-						break;
-
-						case 'scissor':
-
-							switch(player2.choice) {
-
-								case 'rock':
-
-									$('#outcome-display').html("player 2 wins!");
-									break;
-
-								case 'paper':
-
-									$('#outcome-display').html("player 1 wins!");
-									break;
-
-								case 'scissor':
-
-									$('#outcome-display').html("TIE!");
-									break;
-
-								default:
-
-									console.log('default');
-									break;
-
-							}
-
-						break;
-
-						default:
-
-							console.log('default');
-							break;
-
-					}
-			}
+			} // end if
 
 				
 
@@ -220,7 +226,7 @@ $(document).ready(function(){
 				$('#opponent-wins').html(player2.wins); // oponents wins
 				$('#opponent-losses').html(player2.losses); // opponents losses
 
-				// if it's player1's turn
+				// if it's player2's turn
 				if (current_turn === 1) {
 
 					// remove the not-visible class
@@ -230,7 +236,7 @@ $(document).ready(function(){
 
 				} // end if
 
-				// if it's player2's turn
+				// if it's player1's turn
 				if (current_turn === 2) {
 
 					// add the not-visible class
@@ -292,19 +298,13 @@ $(document).ready(function(){
 
 		}); // end updating screen
 
-		function rpsGameLogic(id_to_pass) {
+		function rpsChoice(id_to_pass) {
 
 			// if it's the first player's turn
 			if (player_number === 1) {		
 
 				// set turns to 2
 				turns = 2;
-
-				/* updat firebase with the current turn
-				dataRef.update({
-					turns: turns
-				}); // end dataRef turns update		
-				*/
 
 				// update firebase with the player one's rps choice
 				dataRef.update({
@@ -320,12 +320,6 @@ $(document).ready(function(){
 				// set turns to 1
 				turns = 1;
 
-				/* update firebase with the current turn
-				dataRef.update({
-					turns: turns
-				}); // end dataRef turns update
-				*/
-
 				// update firebase with the player two's rps choice
 				dataRef.update({
 				  	'players/player2/choice': id_to_pass,
@@ -334,7 +328,7 @@ $(document).ready(function(){
 
 			} // end if
 
-		} // end rpsGameLogic()
+		} // end rpsChoice()
 
 		
 		// click events
@@ -353,9 +347,30 @@ $(document).ready(function(){
 			var rps_button_id = $(this).attr('id');
 
 			// call the rpsGameLogic() function and pass the id of the button clicked
-			rpsGameLogic(rps_button_id);
+			rpsChoice(rps_button_id);
 
 		}) // end rps icon click event
+
+		// onuload event to trigger if the player refreshes page or leaves the site
+		$(window).unload(function() {
+			
+			console.log(player_number);
+
+
+
+			if (player_number === 1) {
+
+				dataRef.child('players/player1').remove();
+
+			}
+
+			if (player_number === 2) {
+
+				dataRef.child('players/player2').remove();
+
+			}
+
+		});
 
 	} // end rockPaperScissor()
 
