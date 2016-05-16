@@ -120,25 +120,11 @@ $(document).ready(function(){
 			var player1 = snapshot.val().players.player1;
 			var player2 = snapshot.val().players.player2;
 
-			/*
-			var player1_wins = snapshot.val().players.player1.wins;
-			var player1_losses = snapshot.val().players.player1.losses;
-
-			var player2_wins = snapshot.val().players.player2.wins;
-			var player2_losses = snapshot.val().player.player2.losses;
-			
-			console.log(player1_wins, player1_losses, player2_wins, player2_losses);
-			*/
-
-			console.log(player1.wins, player2.wins);
-
 			// store the value of turns in the current_turn variable
 			var current_turn = snapshot.val().turns;
 
 			// if it's the second player's turn
 			if (current_turn === 1) {
-
-				
 
 				// switch statement for the rps game logic
 				switch(player1.choice) {
@@ -149,17 +135,17 @@ $(document).ready(function(){
 
 							case 'rock':
 
-								$('#outcome-display').html("TIE!");
+								$('#outcome-display').html("tie");
 								break;
 
 							case 'paper':
 
-								$('#outcome-display').html("player 2 wins!");
+								$('#outcome-display').html(player2.name + " wins!");
 								break;
 
 							case 'scissor':
 
-								$('#outcome-display').html("player 1 wins!");
+								$('#outcome-display').html(player1.name + " wins!");
 								break;
 
 							default:
@@ -177,17 +163,17 @@ $(document).ready(function(){
 
 							case 'rock':
 
-								$('#outcome-display').html("player 1 wins!");
+								$('#outcome-display').html(player1.name + " wins!");
 								break;
 
 							case 'paper':
 
-								$('#outcome-display').html("TIE!");
+								$('#outcome-display').html("tie");
 								break;
 
 							case 'scissor':
 
-								$('#outcome-display').html("player 2 wins!");
+								$('#outcome-display').html(player2.name + " wins!");
 								break;
 
 							default:
@@ -205,17 +191,17 @@ $(document).ready(function(){
 
 							case 'rock':
 
-								$('#outcome-display').html("player 2 wins!");
+								$('#outcome-display').html(player2.name + " wins!");
 								break;
 
 							case 'paper':
 
-								$('#outcome-display').html("player 1 wins!");
+								$('#outcome-display').html(player1.name + " wins!");
 								break;
 
 							case 'scissor':
 
-								$('#outcome-display').html("TIE!");
+								$('#outcome-display').html("tie");
 								break;
 
 							default:
@@ -233,8 +219,6 @@ $(document).ready(function(){
 						break;
 
 				} // end switch for game logic
-
-				
 
 			} // end if
 
@@ -338,7 +322,6 @@ $(document).ready(function(){
 
 							case 'rock':
 
-								$('#outcome-display').html("TIE!");
 								break;
 
 							case 'paper':
@@ -357,7 +340,6 @@ $(document).ready(function(){
 
 							default:
 
-								$('#outcome-display').html("");
 								break;
 
 						}
@@ -370,22 +352,24 @@ $(document).ready(function(){
 
 							case 'rock':
 
-								$('#outcome-display').html("player 1 wins!");
+								wins = player1.wins;
+								wins++;
+								dataRef.update({'players/player1/wins': wins});
 								break;
 
 							case 'paper':
 
-								$('#outcome-display').html("TIE!");
 								break;
 
 							case 'scissor':
 
-								$('#outcome-display').html("player 2 wins!");
+								wins = player2.wins;
+								wins++;
+								dataRef.update({'players/player2/wins': wins});
 								break;
 
 							default:
 
-								$('#outcome-display').html("");
 								break;
 
 						}
@@ -398,22 +382,24 @@ $(document).ready(function(){
 
 							case 'rock':
 
-								$('#outcome-display').html("player 2 wins!");
+								wins = player2.wins;
+								wins++;
+								dataRef.update({'players/player2/wins': wins});
 								break;
 
 							case 'paper':
 
-								$('#outcome-display').html("player 1 wins!");
+								wins = player1.wins;
+								wins++;
+								dataRef.update({'players/player1/wins': wins});
 								break;
 
 							case 'scissor':
 
-								$('#outcome-display').html("TIE!");
 								break;
 
 							default:
 
-								$('#outcome-display').html("");
 								break;
 
 						}
@@ -427,9 +413,9 @@ $(document).ready(function(){
 
 				} // end switch for game logic
 
-			});
+			}); // end dataRef
 
-		}
+		} // end rpsGameLogic()
 
 		function rpsChoice(id_to_pass) {
 
