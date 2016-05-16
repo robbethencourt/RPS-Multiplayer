@@ -472,6 +472,24 @@ $(document).ready(function(){
 
 		}) // end rps icon click event
 
+		// click event for when comments are addded
+		$('#comment-button').on('click', function() {
+
+			// get the comment to send
+			var comment_to_send = $('#comment-input').val().trim();
+
+			// reference the child comments in firebase
+			var comments_ref = dataRef.child('comments');
+
+			// push the comments to firebase with the local name variable assigned
+			comments_ref.push({
+				name: name,
+				comment: comment_to_send
+				
+			}); // end data push
+
+		}); // end comment button click event
+
 		// onuload event to trigger if the player refreshes page or leaves the site
 		$(window).unload(function() {
 
@@ -497,6 +515,7 @@ $(document).ready(function(){
 
 						// we remove player 1's data
 						dataRef.child('players/player1').remove();
+						dataRef.child('comments').remove();
 
 					} // end if
 
@@ -505,6 +524,7 @@ $(document).ready(function(){
 
 						// we remove player 2's data
 						dataRef.child('players/player2').remove();
+						dataRef.child('comments').remove();
 
 					} // end if
 
