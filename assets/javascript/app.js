@@ -302,13 +302,21 @@ $(document).ready(function(){
 
 			} // end if
 
-			var comment_to_display = snapshot.val().comments;
-
-			console.log(comment_to_display);
-
-			//$('#comment-display').html(snapshot.val().comments);
-
 		}); // end updating screen
+
+		// grabbed the comments section of firebase to use below in the section where I'll be adding comments to the screen
+		var commentsRef = new Firebase('https://multiplayer-rps.firebaseio.com/comments');
+
+		// updating comments to the screen
+		commentsRef.on('child_added', function(childSnapshot, prevChildKey) {
+
+			// grab the objects from firebase
+			var comment_to_add = childSnapshot.val();
+
+			// add the name of who entered the comment and what their comment is. I'm ussing prepend so that the newst comment is displayed on top
+			$('#comment-display').prepend('<p>' + comment_to_add.name + ': ' + comment_to_add.comment + '</p>');
+
+		}); // dataRef for comments
 
 		function rpsGameLogic() {
 
@@ -493,6 +501,9 @@ $(document).ready(function(){
 				comment: comment_to_send
 				
 			}); // end data push
+
+			// empty the comment input
+			$('#comment-input').val('');
 
 		}); // end comment button click event
 
