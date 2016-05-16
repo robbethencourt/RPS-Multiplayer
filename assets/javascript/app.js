@@ -44,6 +44,15 @@ $(document).ready(function(){
 				// if there isn't any data in firebase
 				if (data_exists !== true || (data_exists === true && player2_exists === true)) {
 
+					if (data_exists === true && player2_exists === true) {
+
+						turns = 1;
+
+					}
+
+					// set the player number to 1
+					player_number = 1;
+
 					// set the players object and the 1 object with what the user entered	
 					dataRef.update({ 
 						'players/player1': {
@@ -56,9 +65,6 @@ $(document).ready(function(){
 							// set the turns object to 0
 							turns: turns
 					}); // end set
-
-					// set the player number to 1
-					player_number = 1;
 
 				// if there is data in firebase
 				} else {
@@ -258,6 +264,9 @@ $(document).ready(function(){
 
 			// if the player number is not 1
 			if (player_number !== 1) {
+
+				console.log(player_number);
+				console.log(turns);
 
 				// update the screen with the below items
 				$('#player-wins').html(player2.wins); // player wins
