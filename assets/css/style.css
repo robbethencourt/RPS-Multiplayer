@@ -90,7 +90,7 @@ a, a:active, a:link {
 
 /* game messages */
 .game-messages {
-	padding: 2em 0 0 0;
+	padding: 1em 0 0 0;
 	text-align: center;
 }
 
@@ -104,14 +104,17 @@ a, a:active, a:link {
 	text-align: center;
 }
 
-.rps-button:hover, .rps-button:focus, .rps-button.active {
+/* removing this as on mobile the icons keep this styling and causes confusion
+.rps-button:hover, .rps-button:focus {
 	color: #4592d0;
 	background: #222;
 }
+*/
 
 
 /* comment display */
 #comment-display {
+	overflow-y: scroll;
 	height: 200px;
 	width: 100%;
 	padding: 1em;
