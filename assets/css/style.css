@@ -43,28 +43,32 @@ a, a:active, a:link {
 
 
 /* nav */
-.navbar-default {
-	border-radius: 0;
-	background: #DBDBDB;
+.navbar {
+	margin-bottom: 0;
 }
 
-	.navbar-default a, .navbar-default a:active, .navbar-default a:link {
-		color: #999;
+	.navbar-default {
+		border-radius: 0;
+		background: #DBDBDB;
 	}
 
-	.navbar-header {
-		float: left;
-	}
+		.navbar-default a, .navbar-default a:active, .navbar-default a:link {
+			color: #999;
+		}
 
-	.navbar-brand {
-		font-family: 'Josefin Sans', sans-serif;
-		font-weight: 700;
-	}
+		.navbar-header {
+			float: left;
+		}
 
-	.navbar-right {
-		float: right;
-		margin-right: 0;
-	}
+		.navbar-brand {
+			font-family: 'Josefin Sans', sans-serif;
+			font-weight: 700;
+		}
+
+		.navbar-right {
+			float: right;
+			margin-right: 0;
+		}
 
 
 
@@ -175,7 +179,7 @@ body {
 }
 
 	.rps-overlay-icons {
-		padding: 15em 0 3em 0;
+		padding: 10em 0 3em 0;
 		text-align: center;
 	}
 
