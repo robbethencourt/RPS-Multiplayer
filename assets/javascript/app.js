@@ -285,12 +285,25 @@ $(document).ready(function(){
 				// if it's player2's turn
 				if (current_turn === 1) {
 
-					// add the not-visible class
-					$('.rps-buttons').addClass('not-visible');
-					// update game message
-					$('#game-message').html("You chose " + player2.choice + ", now it's " + player1.name + "'s turn");
-				
-				} // end if
+					if (wins !==0) {
+
+						// add the not-visible class
+						$('.rps-buttons').addClass('not-visible');
+						// update game message
+						$('#game-message').html("You chose " + player2.choice + ", now it's " + player1.name + "'s turn");
+
+					}
+
+					if (wins === 0) {
+
+						// add the not-visible class
+						$('.rps-buttons').addClass('not-visible');
+						// update game message
+						$('#game-message').html("it's " + player1.name + "'s turn");
+
+					}
+
+				}
 
 				// if it's nobody's turn
 				if (current_turn === 0) {
