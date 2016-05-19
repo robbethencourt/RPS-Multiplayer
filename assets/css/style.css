@@ -115,7 +115,7 @@ a, a:active, a:link {
 /* comment display */
 #comment-display {
 	overflow-y: scroll;
-	height: 200px;
+	height: 150px;
 	width: 100%;
 	padding: 1em;
 	background: #222;
@@ -221,3 +221,16 @@ body {
 			color: #eee;
 			background: #4592d0;
 		}
+
+
+
+/* media querries */
+@media (min-width: 768px) { 
+
+	/* comment display */
+	#comment-display {
+		overflow-y: visible;
+		min-height: 150px;
+	}
+
+}
