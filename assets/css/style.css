@@ -24,7 +24,7 @@ a, a:active, a:link {
 
 /* stop zooming when keyboard displays on iphone */
 .ui-select .ui-btn select{
-	font-size: 50px;
+	font-size: 24px;
 }
 
 /* eliminates the gutters in bootstrap */
