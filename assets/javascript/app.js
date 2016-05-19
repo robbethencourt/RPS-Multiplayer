@@ -26,7 +26,7 @@ $(document).ready(function(){
 				wins: wins,
 				losses: losses,
 				choice: choice
-			}
+			} // end player object
 
 			// declare the variable we'll use to log as firebase being either empty (false) or has data (true)
 			var data_exists = null;
@@ -458,7 +458,7 @@ $(document).ready(function(){
 				  	turns: turns
 				}); // end dataRef players update
 
-			}
+			} // end if
 
 			// if it's the second player's turn
 			if (player_number === 2) {
